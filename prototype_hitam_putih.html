@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype & Mockup Hitam-Putih SIMPEG</title>
+    <!-- Google Font: Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Outfit', 'Arial', sans-serif;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F3F4F6;
+            color: #000000;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Sidebar Selector */
+        .mockup-sidebar {
+            width: 300px;
+            background-color: #ffffff;
+            border-right: 2px solid #000000;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .sidebar-header {
+            padding: 20px;
+            border-bottom: 2px solid #000000;
+            background-color: #E5E7EB;
+        }
+        .sidebar-header h2 {
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .sidebar-header p {
+            margin: 5px 0 0 0;
+            font-size: 0.8rem;
+            color: #4B5563;
+        }
+        .menu-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+        .menu-header {
+            padding: 12px 20px 6px 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #6B7280;
+            background-color: #F9FAFB;
+            border-bottom: 1px solid #E5E7EB;
+        }
+        .menu-item {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid #E5E7EB;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+        .menu-item i {
+            width: 20px;
+            margin-right: 10px;
+            font-size: 0.95rem;
+            text-align: center;
+        }
+        .menu-item:hover {
+            background-color: #F3F4F6;
+        }
+        .menu-item.active {
+            background-color: #000000;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* Mockup Viewer Area */
+        .mockup-viewer {
+            flex-grow: 1;
+            padding: 30px;
+            overflow-y: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #E5E7EB;
+        }
+
+        /* Wireframe Page Frame */
+        .wireframe-container {
+            width: 100%;
+            max-width: 850px;
+            background-color: #ffffff;
+            border: 3px solid #000000;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .wireframe-container.active {
+            display: flex;
+        }
+
+        /* Wireframe UI Styling Elements */
+        .wf-header {
+            border-bottom: 3px solid #000000;
+            background-color: #ffffff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .wf-logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            border: 2px solid #000000;
+            padding: 5px 12px;
+            text-transform: uppercase;
+        }
+        .wf-nav-user {
+            font-weight: 500;
+            border: 2px solid #000000;
+            padding: 5px 12px;
+            font-size: 0.85rem;
+        }
+        .wf-body {
+            display: flex;
+            min-height: 480px;
+        }
+        .wf-sidebar {
+            width: 180px;
+            border-right: 3px solid #000000;
+            padding: 15px 10px;
+            background-color: #ffffff;
+        }
+        .wf-side-item {
+            border: 2px solid #000000;
+            padding: 8px;
+            margin-bottom: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        .wf-side-item.active {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        .wf-main {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: #ffffff;
+        }
+        .wf-title-section {
+            border-bottom: 2px solid #000000;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .wf-title-section h3 {
+            margin: 0;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        .wf-title-section .wf-btn {
+            padding: 6px 12px;
+            font-size: 0.8rem;
+        }
+
+        /* Wireframe UI Components */
+        .wf-btn {
+            border: 2px solid #000000;
+            background-color: #ffffff;
+            color: #000000;
+            padding: 8px 16px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-align: center;
+        }
+        .wf-btn-dark {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        .wf-btn-sm {
+            padding: 4px 8px !important;
+            font-size: 0.75rem !important;
+        }
+        .wf-input {
+            width: 100%;
+            border: 2px solid #000000;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            background-color: #ffffff;
+        }
+        .wf-textarea {
+            width: 100%;
+            border: 2px solid #000000;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            resize: none;
+            background-color: #ffffff;
+        }
+        .wf-select {
+            width: 100%;
+            border: 2px solid #000000;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            background-color: #ffffff;
+        }
+        .wf-card {
+            border: 2px solid #000000;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: #ffffff;
+        }
+        .wf-card-header {
+            border-bottom: 2px solid #000000;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .wf-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .wf-table th {
+            border: 2px solid #000000;
+            padding: 8px;
+            background-color: #E5E7EB;
+            font-weight: 700;
+            text-align: left;
+            font-size: 0.8rem;
+        }
+        .wf-table td {
+            border: 2px solid #000000;
+            padding: 8px;
+            font-size: 0.8rem;
+        }
+        .wf-placeholder-box {
+            border: 2px dashed #000000;
+            padding: 30px;
+            text-align: center;
+            font-weight: 500;
+            color: #4B5563;
+            background-color: #F9FAFB;
+        }
+        
+        /* Grid Helpers */
+        .wf-row {
+            display: flex;
+            gap: 15px;
+        }
+        .wf-col {
+            flex: 1;
+        }
+        .wf-col-4 {
+            width: 33.33%;
+        }
+        .wf-col-8 {
+            width: 66.66%;
+        }
+
+        /* Mockup Login Card specific layout */
+        .login-wf-box {
+            width: 100%;
+            max-width: 400px;
+            border: 3px solid #000000;
+            padding: 30px;
+            background-color: #ffffff;
+            text-align: center;
+        }
+        .login-wf-logo {
+            width: 70px;
+            height: 70px;
+            border: 2px dashed #000000;
+            margin: 0 auto 15px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        /* Alert Overlay Mockup */
+        .alert-mockup-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(229, 231, 235, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+        .alert-mockup-box {
+            width: 320px;
+            border: 3px solid #000000;
+            padding: 20px;
+            background-color: #ffffff;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar Menu Selector -->
+    <div class="mockup-sidebar">
+        <div class="sidebar-header">
+            <h2>Mockup SIMPEG</h2>
+            <p>Pondok Pesantren Asy-Syakiriyah Jati</p>
+        </div>
+        <ul class="menu-list">
+            <li class="menu-header">Antarmuka Admin</li>
+            <li class="menu-item active" onclick="showMockup('admin-login')"><i class="fas fa-sign-in-alt"></i>1. Login Admin</li>
+            <li class="menu-item" onclick="showMockup('admin-dashboard')"><i class="fas fa-tachometer-alt"></i>2. Dashboard Admin</li>
+            <li class="menu-item" onclick="showMockup('admin-pegawai')"><i class="fas fa-users"></i>3. Data Pegawai Admin</li>
+            <li class="menu-item" onclick="showMockup('admin-tambah-pegawai')"><i class="fas fa-user-plus"></i>4. Tambah Pegawai</li>
+            <li class="menu-item" onclick="showMockup('admin-edit-pegawai')"><i class="fas fa-user-edit"></i>5. Edit Pegawai</li>
+            <li class="menu-item" onclick="showMockup('admin-hapus-pegawai')"><i class="fas fa-trash-alt"></i>6. Hapus Pegawai (Pop-up)</li>
+            <li class="menu-item" onclick="showMockup('admin-detail-pegawai')"><i class="fas fa-id-card"></i>7. Detail Pegawai Admin</li>
+            <li class="menu-item" onclick="showMockup('admin-jabatan')"><i class="fas fa-briefcase"></i>8. Data Jabatan</li>
+            <li class="menu-item" onclick="showMockup('admin-riwayat')"><i class="fas fa-history"></i>9. Riwayat Pekerjaan</li>
+            <li class="menu-item" onclick="showMockup('admin-user')"><i class="fas fa-user-shield"></i>10. Akun Pengguna</li>
+            <li class="menu-item" onclick="showMockup('admin-laporan')"><i class="fas fa-file-invoice"></i>11. Laporan Admin</li>
+            <li class="menu-item" onclick="showMockup('admin-logout')"><i class="fas fa-sign-out-alt"></i>12. Logout Admin</li>
+            
+            <li class="menu-header">Antarmuka Pimpinan</li>
+            <li class="menu-item" onclick="showMockup('pim-login')"><i class="fas fa-sign-in-alt"></i>1. Login Pimpinan</li>
+            <li class="menu-item" onclick="showMockup('pim-dashboard')"><i class="fas fa-tachometer-alt"></i>2. Dashboard Pimpinan</li>
+            <li class="menu-item" onclick="showMockup('pim-pegawai')"><i class="fas fa-users"></i>3. Data Pegawai Pimpinan</li>
+            <li class="menu-item" onclick="showMockup('pim-detail-pegawai')"><i class="fas fa-id-card"></i>4. Detail Pegawai Pimpinan</li>
+            <li class="menu-item" onclick="showMockup('pim-laporan')"><i class="fas fa-file-invoice"></i>5. Laporan Pimpinan</li>
+            <li class="menu-item" onclick="showMockup('pim-logout')"><i class="fas fa-sign-out-alt"></i>6. Logout Pimpinan</li>
+        </ul>
+    </div>
+
+    <!-- Viewer Canvas -->
+    <div class="mockup-viewer">
+
+        <!-- ============================================== -->
+        <!-- ADMIN MOCKUPS -->
+        <!-- ============================================== -->
+
+        <!-- 1. Halaman Login Admin -->
+        <div id="admin-login" class="wireframe-container active" style="align-items: center; justify-content: center; min-height: 550px; background-color: #E5E7EB; border: none; box-shadow: none;">
+            <div class="login-wf-box">
+                <div class="login-wf-logo">[X]</div>
+                <h3 style="margin: 0 0 5px 0; font-weight: 700;">PP. ASY-SYAKIRIYAH JATI</h3>
+                <p style="margin: 0 0 25px 0; font-size: 0.85rem; color: #4B5563; font-weight: 500;">Login Admin Kepegawaian</p>
+                
+                <input type="text" class="wf-input" placeholder="Masukkan Email Anda (admin@...)">
+                <input type="password" class="wf-input" placeholder="Masukkan Password Anda">
+                
+                <div style="text-align: left; margin-bottom: 20px;">
+                    <label style="font-size: 0.85rem; font-weight: 500; cursor: pointer;">
+                        <input type="checkbox"> Ingat sesi login saya
+                    </label>
+                </div>
+
+                <button class="wf-btn wf-btn-dark" style="width: 100%;">MASUK APLIKASI</button>
+                <div style="margin-top: 25px; font-size: 0.75rem; color: #6B7280;">&copy; 2026 PP. Asy-Syakiriyah Jati</div>
+            </div>
+        </div>
+
+        <!-- 2. Dashboard Admin -->
+        <div id="admin-dashboard" class="wireframe-container">
+            <div class="wf-header">
+                <div class="wf-logo">[X] ASY-SYAKIRIYAH</div>
+                <div class="wf-nav-user"><i class="fa fa-user"></i> Admin Kepegawaian [v]</div>
+            </div>
+            <div class="wf-body">
+                <div class="wf-sidebar">
+                    <div class="wf-side-item active">Dashboard</div>
+                    <div class="wf-side-item">Data Pegawai</div>
+                    <div class="wf-side-item">Jabatan</div>
+                    <div class="wf-side-item">Riwayat Pekerjaan</div>
+                    <div class="wf-side-item">User Pengguna</div>
+                    <div class="wf-side-item">Laporan</div>
+                    <div class="wf-side-item" style="color: red;">Logout</div>
+                </div>
+                <div class="wf-main">
+                    <div class="wf-title-section">
+                        <h3>Dashboard SIMPEG</h3>
+                        <span style="font-size: 0.8rem; font-weight: 600;">Home / Dashboard</span>
+                    </div>
+                    
+                    <div class="wf-card">
+                        <div style="font-weight: 700; font-size: 1.1rem; margin-bottom: 5px;">Selamat Datang di SIMPEG!</div>
+                        <div style="font-size: 0.85rem; color: #4B5563;">Sistem kepegawaian Pondok Pesantren Asy-Syakiriyah Jati. Anda masuk sebagai Administrator.</div>
+                    </div>
+
+                    <div class="wf-row">
+                        <div class="wf-col wf-card" style="text-align: center; padding: 10px;">
+                            <div style="font-size: 0.75rem; font-weight: 700; color: #4B5563;">TOTAL PEGAWAI</div>
+                            <div style="font-size: 1.5rem; font-weight: 700;">7 orang</div>
+                        </div>
+                        <div class="wf-col wf-card" style="text-align: center; padding: 10px;">
+                            <div style="font-size: 0.75rem; font-weight: 700; color: #4B5563;">TOTAL GURU</div>
+                            <div style="font-size: 1.5rem; font-weight: 700;">3 orang</div>
+                        </div>
+                        <div class="wf-col wf-card" style="text-align: center; padding: 10px;">
+                            <div style="font-size: 0.75rem; font-weight: 700; color: #4B5563;">STAFF TU</div>
+                            <div style="font-size: 1.5rem; font-weight: 700;">2 orang</div>
+                        </div>
+                    </div>
+
+                    <div class="wf-row">
+                        <div class="wf-col wf-col-8 wf-card">
+                            <div class="wf-card-header">Grafik Pegawai Per Jabatan</div>
+                            <div class="wf-placeholder-box" style="padding: 40px 10px;">[ DIAGRAM BATANG / BAR CHART JABATAN ]</div>
+                        </div>
+                        <div class="wf-col wf-col-4 wf-card">
+                            <div class="wf-card-header">Grafik Status</div>
+                            <div class="wf-placeholder-box" style="padding: 40px 10px;">[ PIE CHART ]</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Halaman Data Pegawai Admin -->
+        <div id="admin-pegawai" class="wireframe-container">
+            <div class="wf-header">
+                <div class="wf-logo">[X] ASY-SYIKIRIYAH</div>
+                <div class="wf-nav-user"><i class="fa fa-user"></i> Admin Kepegawaian [v]</div>
+            </div>
+            <div class="wf-body">
+                <div class="wf-sidebar">
+                    <div class="wf-side-item">Dashboard</div>
+                    <div class="wf-side-item active">Data Pegawai</div>
+                    <div class="wf-side-item">Jabatan</div>
+                    <div class="wf-side-item">Riwayat Pekerjaan</div>
+                    <div class="wf-side-item">User Pengguna</div>
+                    <div class="wf-side-item">Laporan</div>
+                </div>
+                <div class="wf-main">
+                    <div class="wf-title-section">
+                        <h3>Daftar Pegawai</h3>
+                        <button class="wf-btn wf-btn-dark wf-btn-sm">+ Tambah Pegawai</button>
+                    </div>
+
+                    <div class="wf-card" style="padding: 12px; margin-bottom: 15px;">
+                        <div class="wf-row">
+                            <div class="wf-col" style="flex: 2;">
+                                <input type="text" class="wf-input" placeholder="Cari Nama/NIP..." style="margin-bottom: 0;">
+                            </div>
+                            <div class="wf-col">
+                                <select class="wf-select" style="margin-bottom: 0;">
+                                    <option>Semua Jabatan</option>
+                                </select>
+                            </div>
+                            <div class="wf-col">
+                                <button class="wf-btn" style="width: 100%;">Filter</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="wf-table">
+                        <thead>
+                            <tr>
+                                <th>Foto</th>
+                                <th>NIP / Nama</th>
+                                <th>Jabatan</th>
+                                <th>Status</th>
+                                <th>Hubungan</th>
+                                <th style="text-align: center;">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="text-align: center;">[O]</td>
+                                <td><b>199312152019041004</b><br>Budi Santoso, S.Kom</td>
+                                <td>Kepala Tata Usaha</td>
+                                <td>Administrasi</td>
+                                <td>084567890123</td>
+                                <td style="text-align: center;">
+                                    <button class="wf-btn wf-btn-sm">Detail</button>
+                                    <button class="wf-btn wf-btn-sm">Edit</button>
+                                    <button class="wf-btn wf-btn-sm" style="color: red;">Hapus</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center;">[O]</td>
+                                <td><b>198205122010011001</b><br>H. Ahmad Syakir, Lc.</td>
+                                <td>Kepala Madrasah</td>
+                                <td>Guru</td>
+                                <td>081234567890</td>
+                                <td style="text-align: center;">
+                                    <button class="wf-btn wf-btn-sm">Detail</button>
+                                    <button class="wf-btn wf-btn-sm">Edit</button>
+                                    <button class="wf-btn wf-btn-sm" style="color: red;">Hapus</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Halaman Tambah Data Pegawai -->
+        <div id="admin-tambah-pegawai" class="wireframe-container">
+            <div class="wf-header">
+                <div class="wf-logo">[X] ASY-SYIKIRIYAH</div>
+                <div class="wf-nav-user"><i class="fa fa-user"></i> Admin Kepegawaian [v]</div>
+            </div>
+            <div class="wf-body">
+                <div class="wf-sidebar">
+                    <div class="wf-side-item">Dashboard</div>
+                    <div class="wf-side-item active">Data Pegawai</div>
+                    <div class="wf-side-item">Jabatan</div>
+                </div>
+                <div class="wf-main">
+                    <div class="wf-title-section">
+                        <h3>Tambah Pegawai Baru</h3>
+                    </div>
+
+                    <div class="wf-row">
+                        <div class="wf-col">
+                            <label style="font-size: 0.8rem; font-weight: 700;">NIP/NIK *</label>
+                            <input type="text" class="wf-input" placeholder="Masukkan NIP">
+                        </div>
+                        <div class="wf-col">
+                            <label style="font-size: 0.8rem; font-weight: 700;">Nama Lengkap *</label>
+                            <input type="text" class="wf-input" placeholder="Nama beserta gelar akademik">
+                        </div>
+                    </div>
+
+                    <div class="wf-row">
+                        <div class="wf-col">
+                            <label style="font-size: 0.8rem; font-weight: 700;">Jenis Kelamin *</label>
+                            <select class="wf-select">
+                                <option>Laki-laki</option>
+                                <option>Perempuan</option>
+                            </select>
+                        </div>
+                        <div class="wf-col">
+                            <label style="font-size: 0.8rem; font-weight: 700;">Tempat Lahir *</label>
+                            <input type="text" class="wf-input" placeholder="Kota kelahiran">
+                        </div>
+                        <div class="wf-col">
+                            <label style="font-size: 0.8rem; font-weight: 700;">Tanggal Lahir *</label>
+                            <input type="date" class="wf-input">
+                        </div>
+                    </div>
+
+                    <div class="wf-row">
+                        <div class="wf-col">
+                            <label style="font-size: 0.8rem; font-weight: 700;">Status Pegawai *</label>
+                            <select class="wf-select">
+                                <option>Guru</option>
+                                <option>Tenaga Administrasi</option>
+                                <option>Staf Pendukung</option>
+                            </select>
+                        </div>
+                        <div class="wf-col">
+                            <label style="font-size: 0.8rem; font-weight: 700;">Jabatan Pesantren *</label>
+                            <select class="wf-select">
+                                <option>-- Pilih Jabatan --</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="wf-row">
+                        <div class="wf-col">
+                            <label style="font-size: 0.8rem; font-weight: 700;">Foto Profil</label>
+                            <input type="file" class="wf-input">
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 15px;">
+                        <button class="wf-btn wf-btn-dark">Simpan Pegawai</button>
+                        <button class="wf-btn">Kembali</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Halaman Edit Data Pegawai -->
+        <div id="admin-edit-pegawai" class="wireframe-container">
+            <div class="wf-header">
+                <div class="wf-logo">[X] ASY-SYIKIRIYAH</div>
+                <div class="wf-nav-user"><i class="fa fa-user"></i> Admin Kepegawaian [v]</div>
+            </div>
+            <div class="wf-body">
+                <div class="wf-sidebar">
+                    <div class="wf-side-item">Dashboard</div>
+                    <div class="wf-side-item active">Data Pegawai</div>
+                </div>
+                <div class="wf-main">
+                    <div class="wf-title-section">
+                        <h3>Edit Data Pegawai</h3>
+                    </div>
+
+                    <div class="wf-row">
+                        <div class="wf-col">
+                            <label style="font-size: 0.8rem; font-weight: 700;">NIP/NIK *</label>
+                            <input type="text" class="wf-input" value="199312152019041004">
+                        </div>
+                        <div class="wf-col">
+                            <label style="font-size: 0.8rem; font-weight: 700;">Nama Lengkap *</label>
+                            <input type="text" class="wf-input" value="Budi Santoso, S.Kom">
+                        </div>
+                    </div>
+
+                    <div class="wf-row">
+                        <div class="wf-col">
+                            <label style="font-size: 0.8rem; font-weight: 700;">Jabatan Aktif *</label>
+                            <select class="wf-select">
+                                <option selected>Kepala Tata Usaha</option>
+                                <option>Guru</option>
+                            </select>
+                        </div>
+                        <div class="wf-col" style="align-self: center; text-align: center;">
+                            <div style="border: 2px solid #000; padding: 5px; width: 60px; height: 60px; margin: 0 auto; line-height: 46px;">[Foto]</div>
+                        </div>
+                        <div class="wf-col">
+                            <label style="font-size: 0.8rem; font-weight: 700;">Ganti Foto Baru</label>
+                            <input type="file" class="wf-input">
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <button class="wf-btn wf-btn-dark">Perbarui Data</button>
+                        <button class="wf-btn">Batal</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. Hapus Data Pegawai (Alert) -->
+        <div id="admin-hapus-pegawai" class="wireframe-container" style="position: relative;">
+            <div class="wf-header">
+                <div class="wf-logo">[X] ASY-SYIKIRIYAH</div>
+                <div class="wf-nav-user"><i class="fa fa-user"></i> Admin [v]</div>
+            </div>
+            <div class="wf-body" style="filter: blur(1.5px);">
+                <div class="wf-sidebar"><div class="wf-side-item">Dashboard</div></div>
+                <div class="wf-main">
+                    <h3>Data Pegawai</h3>
+                    <div class="wf-card">Tabel data disembunyikan untuk memunculkan pop-up konfirmasi.</div>
+                </div>
+            </div>
+            
+            <!-- Alert Mockup overlay -->
+            <div class="alert-mockup-overlay">
+                <div class="alert-mockup-box">
+                    <div style="font-size: 2rem; margin-bottom: 10px;"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                    <h4 style="margin: 0 0 10px 0; font-weight: 700;">Konfirmasi Hapus</h4>
+                    <p style="font-size: 0.85rem; color: #4B5563; margin-bottom: 20px;">Apakah Anda yakin ingin menghapus data pegawai <b>Budi Santoso</b> secara permanen?</p>
+                    <button class="wf-btn wf-btn-dark wf-btn-sm" style="background-color: red; color: white; border-color: red;">YA, HAPUS</button>
+                    <button class="wf-btn wf-btn-sm">BATAL</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. Halaman Detail Data Pegawai Admin -->
+        <div id="admin-detail-pegawai" class="wireframe-container">
+            <div class="wf-header">
+                <div class="wf-logo">[X] ASY-SYIKIRIYAH</div>
+                <div class="wf-nav-user"><i class="fa fa-user"></i> Admin Kepegawaian [v]</div>
+            </div>
+            <div class="wf-body">
+                <div class="wf-sidebar">
+                    <div class="wf-side-item">Dashboard</div>
+                    <div class="wf-side-item active">Data Pegawai</div>
+                </div>
+                <div class="wf-main">
+                    <div class="wf-title-section">
+                        <h3>Profil Pegawai Detail</h3>
+                        <button class="wf-btn wf-btn-sm">Edit Profil</button>
+                    </div>
+
+                    <div class="wf-row">
+                        <div class="wf-col wf-col-4 wf-card" style="text-align: center;">
+                            <div style="border: 2px dashed #000; width: 100px; height: 100px; margin: 0 auto 10px auto; line-height: 90px; font-weight: bold;">[ FOTO ]</div>
+                            <h5 style="margin: 0 0 4px 0;">Budi Santoso, S.Kom</h5>
+                            <span style="font-size: 0.8rem; font-weight: 700;">NIP. 199312152019041004</span>
+                        </div>
+                        <div class="wf-col wf-col-8 wf-card">
+                            <div class="wf-card-header">Biodata Lengkap</div>
+                            <div style="font-size: 0.85rem; line-height: 1.8;">
+                                <b>Jenis Kelamin:</b> Laki-laki<br>
+                                <b>Tempat, Tgl Lahir:</b> Depok, 15 Desember 1993<br>
+                                <b>Email:</b> budi@gmail.com | <b>No HP:</b> 084567890123<br>
+                                <b>Alamat:</b> Jl. Kenanga Raya No. 45, Depok<br>
+                                <b>Status Kepegawaian:</b> Tenaga Administrasi
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wf-card">
+                        <div class="wf-card-header">Riwayat Mutasi Jabatan</div>
+                        <table class="wf-table">
+                            <thead>
+                                <tr>
+                                    <th>Tanggal</th>
+                                    <th>Jabatan Lama</th>
+                                    <th>Jabatan Baru</th>
+                                    <th>Keterangan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>10 Jan 2023</td>
+                                    <td>Staff Administrasi</td>
+                                    <td><b>Kepala Tata Usaha</b></td>
+                                    <td>Promosi Jabatan Tahunan</td>
+                                </tr>
+                                <tr>
+                                    <td>01 Apr 2019</td>
+                                    <td>- (Awal)</td>
+                                    <td>Staff Administrasi</td>
+                                    <td>Pengangkatan Pertama Pegawai Baru</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. Halaman Data Jabatan -->
+        <div id="admin-jabatan" class="wireframe-container">
+            <div class="wf-header">
+                <div class="wf-logo">[X] ASY-SYIKIRIYAH</div>
+                <div class="wf-nav-user"><i class="fa fa-user"></i> Admin [v]</div>
+            </div>
+            <div class="wf-body">
+                <div class="wf-sidebar">
+                    <div class="wf-side-item">Dashboard</div>
+                    <div class="wf-side-item">Data Pegawai</div>
+                    <div class="wf-side-item active">Jabatan</div>
+                    <div class="wf-side-item">Riwayat Kerja</div>
+                </div>
+                <div class="wf-main">
+                    <div class="wf-title-section">
+                        <h3>Manajemen Jabatan Pesantren</h3>
+                    </div>
+
+                    <div class="wf-row">
+                        <div class="wf-col wf-col-8 wf-card">
+                            <div class="wf-card-header">Daftar Jabatan Aktif</div>
+                            <table class="wf-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 40px;">No</th>
+                                        <th>Nama Jabatan</th>
+                                        <th>Total Pegawai</th>
+                                        <th style="text-align: center;">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td><b>Kepala Madrasah</b></td>
+                                        <td>1 orang</td>
+                                        <td style="text-align: center;">
+                                            <button class="wf-btn wf-btn-sm">Edit</button>
+                                            <button class="wf-btn wf-btn-sm" style="color: red;">Hapus</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td><b>Guru Agama</b></td>
+                                        <td>1 orang</td>
+                                        <td style="text-align: center;">
+                                            <button class="wf-btn wf-btn-sm">Edit</button>
+                                            <button class="wf-btn wf-btn-sm" style="color: red;">Hapus</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="wf-col wf-col-4 wf-card">
+                            <div class="wf-card-header">Tambah Jabatan</div>
+                            <label style="font-size: 0.75rem; font-weight: 700;">Nama Jabatan</label>
+                            <input type="text" class="wf-input" placeholder="Nama jabatan baru">
+                            
+                            <label style="font-size: 0.75rem; font-weight: 700;">Deskripsi</label>
+                            <textarea class="wf-textarea" rows="3" placeholder="Keterangan tugas..."></textarea>
+                            
+                            <button class="wf-btn wf-btn-dark" style="width: 100%;">Simpan Jabatan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 9. Halaman Riwayat Pekerjaan -->
+        <div id="admin-riwayat" class="wireframe-container">
+            <div class="wf-header">
+                <div class="wf-logo">[X] ASY-SYIKIRIYAH</div>
+                <div class="wf-nav-user"><i class="fa fa-user"></i> Admin [v]</div>
+            </div>
+            <div class="wf-body">
+                <div class="wf-sidebar">
+                    <div class="wf-side-item">Dashboard</div>
+                    <div class="wf-side-item">Data Pegawai</div>
+                    <div class="wf-side-item">Jabatan</div>
+                    <div class="wf-side-item active">Riwayat Pekerjaan</div>
+                </div>
+                <div class="wf-main">
+                    <div class="wf-title-section">
+                        <h3>Log Riwayat Pekerjaan</h3>
+                        <button class="wf-btn wf-btn-dark wf-btn-sm">+ Tambah Manual</button>
+                    </div>
+
+                    <table class="wf-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 40px;">No</th>
+                                <th>Nama Pegawai</th>
+                                <th>NIP</th>
+                                <th>Jabatan Lama</th>
+                                <th>Jabatan Baru</th>
+                                <th>Tanggal Perubahan</th>
+                                <th style="text-align: center;">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td><b>Budi Santoso, S.Kom</b></td>
+                                <td>199312152019041004</td>
+                                <td>Staff Administrasi</td>
+                                <td>Kepala Tata Usaha</td>
+                                <td>10 Jan 2023</td>
+                                <td style="text-align: center;">
+                                    <button class="wf-btn wf-btn-sm">Edit</button>
+                                    <button class="wf-btn wf-btn-sm" style="color: red;">Hapus</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 10. Halaman Akun Pengguna -->
+        <div id="admin-user" class="wireframe-container">
+            <div class="wf-header">
+                <div class="wf-logo">[X] ASY-SYIKIRIYAH</div>
+                <div class="wf-nav-user"><i class="fa fa-user"></i> Admin [v]</div>
+            </div>
+            <div class="wf-body">
+                <div class="wf-sidebar">
+                    <div class="wf-side-item">Dashboard</div>
+                    <div class="wf-side-item">Data Pegawai</div>
+                    <div class="wf-side-item active">User Pengguna</div>
+                </div>
+                <div class="wf-main">
+                    <div class="wf-title-section">
+                        <h3>Akun Operator Sistem</h3>
+                        <button class="wf-btn wf-btn-dark wf-btn-sm">+ Tambah Akun</button>
+                    </div>
+
+                    <table class="wf-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 40px;">No</th>
+                                <th>Nama Lengkap</th>
+                                <th>Email</th>
+                                <th>Role Akses</th>
+                                <th style="text-align: center;">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td><b>Administrator SIMPEG</b></td>
+                                <td>admin@syakiriyah.sch.id</td>
+                                <td>Admin</td>
+                                <td style="text-align: center;">
+                                    <button class="wf-btn wf-btn-sm">Edit</button>
+                                    <button class="wf-btn wf-btn-sm" style="color: #ccc;" disabled>Hapus</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td><b>Pimpinan Pondok Pesantren</b></td>
+                                <td>pimpinan@syakiriyah.sch.id</td>
+                                <td>Pimpinan</td>
+                                <td style="text-align: center;">
+                                    <button class="wf-btn wf-btn-sm">Edit</button>
+                                    <button class="wf-btn wf-btn-sm" style="color: red;">Hapus</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 11. Halaman Laporan Admin -->
+        <div id="admin-laporan" class="wireframe-container">
+            <div class="wf-header">
+                <div class="wf-logo">[X] ASY-SYIKIRIYAH</div>
+                <div class="wf-nav-user"><i class="fa fa-user"></i> Admin [v]</div>
+            </div>
+            <div class="wf-body">
+                <div class="wf-sidebar">
+                    <div class="wf-side-item">Dashboard</div>
+                    <div class="wf-side-item">Data Pegawai</div>
+                    <div class="wf-side-item active">Laporan</div>
+                </div>
+                <div class="wf-main">
+                    <div class="wf-title-section">
+                        <h3>Laporan Rekapitulasi Kepegawaian</h3>
+                    </div>
+
+                    <div class="wf-card">
+                        <div class="wf-row">
+                            <div class="wf-col">
+                                <label style="font-size: 0.8rem; font-weight: 700;">Filter Jabatan</label>
+                                <select class="wf-select" style="margin-bottom: 0;">
+                                    <option>-- Semua Jabatan --</option>
+                                </select>
+                            </div>
+                            <div class="wf-col">
+                                <label style="font-size: 0.8rem; font-weight: 700;">Filter Status Pegawai</label>
+                                <select class="wf-select" style="margin-bottom: 0;">
+                                    <option>-- Semua Status --</option>
+                                </select>
+                            </div>
+                            <div class="wf-col" style="display: flex; gap: 8px;">
+                                <button class="wf-btn wf-btn-dark" style="flex: 1; align-self: flex-end;">Tampilkan</button>
+                                <button class="wf-btn" style="flex: 1; align-self: flex-end;">Cetak PDF</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wf-card">
+                        <div class="wf-card-header">Rekapitulasi Ringkasan</div>
+                        <div style="font-size: 0.85rem; line-height: 1.8;">
+                            Total Pegawai Aktif: <b>7 orang</b> | Total Jabatan: <b>8 kategori</b> | Rata-rata Masa Kerja: <b>4 tahun</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 12. Logout Admin -->
+        <div id="admin-logout" class="wireframe-container" style="align-items: center; justify-content: center; min-height: 500px; background-color: #E5E7EB; border: none; box-shadow: none;">
+            <div class="login-wf-box">
+                <div style="font-size: 2.5rem; margin-bottom: 15px;"><i class="fas fa-sign-out-alt"></i></div>
+                <h4 style="margin: 0 0 10px 0; font-weight: 700;">Logout Berhasil</h4>
+                <p style="font-size: 0.85rem; color: #4B5563; margin-bottom: 25px;">Sesi keamanan Administrator telah dihapus secara aman dari server.</p>
+                <button class="wf-btn wf-btn-dark" onclick="showMockup('admin-login')" style="width: 100%;">Kembali Ke Login</button>
+            </div>
+        </div>
+
+
+        <!-- ============================================== -->
+        <!-- PIMPINAN MOCKUPS -->
+        <!-- ============================================== -->
+
+        <!-- 1. Halaman Login Pimpinan -->
+        <div id="pim-login" class="wireframe-container" style="align-items: center; justify-content: center; min-height: 550px; background-color: #E5E7EB; border: none; box-shadow: none;">
+            <div class="login-wf-box">
+                <div class="login-wf-logo">[X]</div>
+                <h3 style="margin: 0 0 5px 0; font-weight: 700;">PP. ASY-SYAKIRIYAH JATI</h3>
+                <p style="margin: 0 0 25px 0; font-size: 0.85rem; color: #4B5563; font-weight: 500;">Login Pimpinan Kepegawaian</p>
+                
+                <input type="text" class="wf-input" placeholder="Masukkan Email Pimpinan (pimpinan@...)">
+                <input type="password" class="wf-input" placeholder="Masukkan Password Anda">
+                
+                <button class="wf-btn wf-btn-dark" style="width: 100%;">MASUK APLIKASI (PIMPINAN)</button>
+                <div style="margin-top: 25px; font-size: 0.75rem; color: #6B7280;">&copy; 2026 PP. Asy-Syakiriyah Jati</div>
+            </div>
+        </div>
+
+        <!-- 2. Dashboard Pimpinan -->
+        <div id="pim-dashboard" class="wireframe-container">
+            <div class="wf-header">
+                <div class="wf-logo">[X] ASY-SYIKIRIYAH</div>
+                <div class="wf-nav-user"><i class="fa fa-user-tie"></i> Pimpinan [v]</div>
+            </div>
+            <div class="wf-body">
+                <div class="wf-sidebar">
+                    <div class="wf-side-item active">Dashboard</div>
+                    <div class="wf-side-item">Data Pegawai</div>
+                    <div class="wf-side-item">Jabatan</div>
+                    <div class="wf-side-item">Laporan</div>
+                </div>
+                <div class="wf-main">
+                    <div class="wf-title-section">
+                        <h3>Dashboard Pimpinan</h3>
+                        <span class="badge text-xs" style="border: 2px solid #000; padding: 3px 8px; font-size: 0.7rem; font-weight: bold;">MODE MONITORING</span>
+                    </div>
+
+                    <div class="wf-card">
+                        <div style="font-weight: 700; font-size: 1.1rem; margin-bottom: 5px;">Ringkasan Kondisi Kepegawaian</div>
+                        <div style="font-size: 0.85rem; color: #4B5563;">Menampilkan total statistik guru, administrasi, dan staf pesantren secara instan.</div>
+                    </div>
+
+                    <div class="wf-row">
+                        <div class="wf-col wf-card" style="text-align: center; padding: 10px;">
+                            <div style="font-size: 0.7rem; font-weight: 700; color: #4B5563;">TOTAL GURU</div>
+                            <div style="font-size: 1.5rem; font-weight: 700;">3 orang</div>
+                        </div>
+                        <div class="wf-col wf-card" style="text-align: center; padding: 10px;">
+                            <div style="font-size: 0.7rem; font-weight: 700; color: #4B5563;">TOTAL JABATAN</div>
+                            <div style="font-size: 1.5rem; font-weight: 700;">8 kategori</div>
+                        </div>
+                    </div>
+
+                    <div class="wf-row">
+                        <div class="wf-col wf-card">
+                            <div class="wf-card-header">Grafik Penilaian Kepegawaian</div>
+                            <div class="wf-placeholder-box" style="padding: 40px 10px;">[ VISUALISASI CHART.JS PEGAWAI PER JABATAN ]</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Halaman Data Pegawai Pimpinan -->
+        <div id="pim-pegawai" class="wireframe-container">
+            <div class="wf-header">
+                <div class="wf-logo">[X] ASY-SYIKIRIYAH</div>
+                <div class="wf-nav-user"><i class="fa fa-user-tie"></i> Pimpinan [v]</div>
+            </div>
+            <div class="wf-body">
+                <div class="wf-sidebar">
+                    <div class="wf-side-item">Dashboard</div>
+                    <div class="wf-side-item active">Data Pegawai</div>
+                    <div class="wf-side-item">Jabatan</div>
+                    <div class="wf-side-item">Laporan</div>
+                </div>
+                <div class="wf-main">
+                    <div class="wf-title-section">
+                        <h3>Daftar Pegawai (Mode Lihat)</h3>
+                    </div>
+
+                    <div class="wf-card" style="padding: 12px; margin-bottom: 15px;">
+                        <div class="wf-row">
+                            <div class="wf-col" style="flex: 3;">
+                                <input type="text" class="wf-input" placeholder="Cari Nama atau NIP pegawai..." style="margin-bottom: 0;">
+                            </div>
+                            <div class="wf-col">
+                                <button class="wf-btn" style="width: 100%;">Cari Data</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="wf-table">
+                        <thead>
+                            <tr>
+                                <th>Foto</th>
+                                <th>NIP</th>
+                                <th>Nama Lengkap</th>
+                                <th>Jabatan</th>
+                                <th>Status</th>
+                                <th style="text-align: center; width: 100px;">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="text-align: center;">[O]</td>
+                                <td>199312152019041004</td>
+                                <td><b>Budi Santoso, S.Kom</b></td>
+                                <td>Kepala Tata Usaha</td>
+                                <td>Administrasi</td>
+                                <td style="text-align: center;">
+                                    <button class="wf-btn wf-btn-sm" onclick="showMockup('pim-detail-pegawai')">Detail</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Halaman Detail Data Pegawai Pimpinan -->
+        <div id="pim-detail-pegawai" class="wireframe-container">
+            <div class="wf-header">
+                <div class="wf-logo">[X] ASY-SYIKIRIYAH</div>
+                <div class="wf-nav-user"><i class="fa fa-user-tie"></i> Pimpinan [v]</div>
+            </div>
+            <div class="wf-body">
+                <div class="wf-sidebar">
+                    <div class="wf-side-item">Dashboard</div>
+                    <div class="wf-side-item active">Data Pegawai</div>
+                </div>
+                <div class="wf-main">
+                    <div class="wf-title-section">
+                        <h3>Profil Pegawai Detail (Read-Only)</h3>
+                    </div>
+
+                    <div class="wf-row">
+                        <div class="wf-col wf-col-4 wf-card" style="text-align: center;">
+                            <div style="border: 2px dashed #000; width: 100px; height: 100px; margin: 0 auto 10px auto; line-height: 90px; font-weight: bold;">[ FOTO ]</div>
+                            <h5 style="margin: 0 0 4px 0;">Budi Santoso, S.Kom</h5>
+                            <span style="font-size: 0.8rem; font-weight: 700;">NIP. 199312152019041004</span>
+                        </div>
+                        <div class="wf-col wf-col-8 wf-card">
+                            <div class="wf-card-header">Informasi Kepegawaian</div>
+                            <div style="font-size: 0.85rem; line-height: 1.8;">
+                                <b>Jabatan:</b> Kepala Tata Usaha<br>
+                                <b>Kontak:</b> budi@gmail.com / 084567890123<br>
+                                <b>Alamat Rumah:</b> Jl. Kenanga Raya No. 45, Depok<br>
+                                <b>Status Kerja:</b> Tenaga Administrasi (Aktif)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wf-card">
+                        <div class="wf-card-header">Riwayat Mutasi Jabatan</div>
+                        <table class="wf-table">
+                            <thead>
+                                <tr>
+                                    <th>Tanggal</th>
+                                    <th>Jabatan Lama</th>
+                                    <th>Jabatan Baru</th>
+                                    <th>Alasan/Keterangan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>10 Jan 2023</td>
+                                    <td>Staff Administrasi</td>
+                                    <td><b>Kepala Tata Usaha</b></td>
+                                    <td>Promosi Jabatan Tahunan</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <button class="wf-btn" onclick="showMockup('pim-pegawai')">Kembali</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Halaman Laporan Pimpinan -->
+        <div id="pim-laporan" class="wireframe-container">
+            <div class="wf-header">
+                <div class="wf-logo">[X] ASY-SYIKIRIYAH</div>
+                <div class="wf-nav-user"><i class="fa fa-user-tie"></i> Pimpinan [v]</div>
+            </div>
+            <div class="wf-body">
+                <div class="wf-sidebar">
+                    <div class="wf-side-item">Dashboard</div>
+                    <div class="wf-side-item">Data Pegawai</div>
+                    <div class="wf-side-item active">Laporan</div>
+                </div>
+                <div class="wf-main">
+                    <div class="wf-title-section">
+                        <h3>Laporan Monitoring Kepegawaian</h3>
+                        <button class="wf-btn wf-btn-dark wf-btn-sm"><i class="fas fa-file-pdf"></i> Ekspor PDF</button>
+                    </div>
+
+                    <div class="wf-card">
+                        <div class="wf-row">
+                            <div class="wf-col">
+                                <label style="font-size: 0.8rem; font-weight: 700;">Filter Jabatan</label>
+                                <select class="wf-select" style="margin-bottom: 0;">
+                                    <option>Semua Jabatan</option>
+                                </select>
+                            </div>
+                            <div class="wf-col">
+                                <label style="font-size: 0.8rem; font-weight: 700;">Filter Status</label>
+                                <select class="wf-select" style="margin-bottom: 0;">
+                                    <option>Semua Status</option>
+                                </select>
+                            </div>
+                            <div class="wf-col" style="display: flex;">
+                                <button class="wf-btn" style="width: 100%; align-self: flex-end;">Lihat Laporan</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wf-card">
+                        <div class="wf-card-header">Rekapitulasi Kepegawaian</div>
+                        <div style="font-size: 0.85rem; line-height: 1.8;">
+                            Total Pegawai Aktif: <b>7 orang</b> | Rata-rata Masa Kerja: <b>4 tahun</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. Logout Pimpinan -->
+        <div id="pim-logout" class="wireframe-container" style="align-items: center; justify-content: center; min-height: 500px; background-color: #E5E7EB; border: none; box-shadow: none;">
+            <div class="login-wf-box">
+                <div style="font-size: 2.5rem; margin-bottom: 15px;"><i class="fas fa-sign-out-alt"></i></div>
+                <h4 style="margin: 0 0 10px 0; font-weight: 700;">Sesi Berakhir</h4>
+                <p style="font-size: 0.85rem; color: #4B5563; margin-bottom: 25px;">Sesi keamanan Pimpinan telah ditutup. Mengarahkan ke halaman login...</p>
+                <button class="wf-btn wf-btn-dark" onclick="showMockup('pim-login')" style="width: 100%;">Kembali Ke Login</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script for Switching Views -->
+    <script>
+        function showMockup(mockupId) {
+            // Hide all active wireframes
+            const containers = document.querySelectorAll('.wireframe-container');
+            containers.forEach(el => {
+                el.classList.remove('active');
+            });
+
+            // Show selected wireframe
+            const selected = document.getElementById(mockupId);
+            if (selected) {
+                selected.classList.add('active');
+            }
+
+            // Update active menu class in sidebar
+            const menuItems = document.querySelectorAll('.menu-item');
+            menuItems.forEach(el => {
+                el.classList.remove('active');
+            });
+
+            // Find clicked menu item and set active
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
